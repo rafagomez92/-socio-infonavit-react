@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
 
 
@@ -12,8 +13,10 @@ const Formulario = () => {
     const [ error, setError ] = useState(true);
 
     const [ messageError, setMessageError] = useState(true);
+    const [ redirect, setRedirect ] = useState(false);
 
     const { email, password } = dataLogin;    
+
 
 
     const baseUrl = "https://staging.api.socioinfonavit.io/api/v1/login";
@@ -31,14 +34,15 @@ const Formulario = () => {
 
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(email, password);
-        IniciarSesion(); 
-        
+        e.preventDefault();        
+        IniciarSesion();         
+                    
         setDataLogin({
             email: '',
             password: ''
         });        
+        
+
     }
 
 
@@ -69,8 +73,9 @@ const Formulario = () => {
     const IniciarSesion = async () => {                
         await axios.post(baseUrl, jsonSend, axiosConfig)
         .then(res => {
-            localStorage.jwt = res.headers.authorization;
-            window.location.href="./benevits";
+            localStorage.jwt = res.headers.authorization;            
+            setRedirect(true);            
+            
         })
         .catch(err => {
             setMessageError(false);
@@ -104,6 +109,7 @@ const Formulario = () => {
                     onChange={handleChange}                 
                 />            
             </div>
+            {redirect && <Redirect to="/benevits" />}
             { messageError ? null : message }
             <div className="form-group">            
                 <input
