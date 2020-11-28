@@ -1,0 +1,22 @@
+.launch {
+    text-align: center;            
+}
+
+.contenedor {
+    max-width: 1280;    
+    height: 100vh;    
+    flex-direction: column;
+    justify-content: center;
+    background-color: #dc3545;    
+}
+
+
+
+.spin {
+  margin-top: 300px;    
+}
+
+
+   
+
+  
