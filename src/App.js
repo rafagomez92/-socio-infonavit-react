@@ -6,7 +6,6 @@ import LauchScreen from './components/launchscreen/LaunchScreen';
 import { Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
 import Benevits from './components/benevits/Benevits';
 
-
 function App() {
   const [ value, setValue ] = useState(true);
 
@@ -24,10 +23,8 @@ function App() {
   return (            
     <Router>
         <div>
-          {/* {value ? <LauchScreen /> : <Login />}             */}          
-          
-          <Switch>                                  
-          <Route exact path="/" component={Login}/>                                                
+          <Switch>                                            
+          {value ? <LauchScreen /> : <Route exact path="/" component={Login} />}                                         
           <Route path="/benevits" component={Benevits}/>                              
           </Switch>         
         </div>                    

@@ -7,17 +7,10 @@ import Header from '../Header';
 const Benevits = () => {    
     const [ wallet, setWallet ] = useState([]);
     const [ locked, setLocked ] = useState([]);
-    const [ unlocked, setUnlocked ] = useState([]);
-    const [ showData, setShowData ] = useState(false);
-    const [ login, setLogin ] = useState(true);
+    const [ unlocked, setUnlocked ] = useState([]);    
 
     let token = localStorage.jwt;
-    console.log(token);
-
-    useEffect(() => {
-
-    })
-        
+            
     useEffect(() => {        
         const URL = "https://staging.api.socioinfonavit.io/api/v1/member/landing_benevits";
         axios.get(URL, {
@@ -45,9 +38,7 @@ const Benevits = () => {
     }, [])
             
 
-    const showBenevits = ( )=> {
-        setShowData(true);
-    }
+    
 
     const logout = () => {
         localStorage.removeItem('jwt');
@@ -81,11 +72,11 @@ const Benevits = () => {
 
     return (
         <div>
-            <Header showBenevits={showBenevits} logout={logout} />
+            <Header logout={logout} />
             <div className="container">
-                <div className="row justify-content-center">                                                                    
-                    {showData ? walletUnlocked : null }                
-                    {showData ? walletLocked : null }                
+                <div className="row justify-content-center">                                                                                        
+                    { walletUnlocked }                
+                    { walletLocked }                
                 </div>
             </div>
         </div>
