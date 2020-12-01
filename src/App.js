@@ -18,12 +18,16 @@ function App() {
   }
 
   
-  return (            
-    <Router>
+  return ( 
+             
+    // Definimos las rutas del proyecto
+    <Router> 
         <div>
           <Switch>                                            
-          {value ? <LauchScreen /> : <Route exact path="/" component={Login} />}                                         
-          <Route path="/benevits" component={Benevits}/>                              
+  {/* Cargamos el splash y luego enviamos a nuestra ruta principa de loginZ */}
+            {value ? <LauchScreen /> : <Route exact path="/" component={Login} />}                                         
+  {/* Ruta que nos muestra los benevits del usuario */}
+            <Route path="/benevits" component={Benevits}/>                              
           </Switch>         
         </div>                    
     </Router>

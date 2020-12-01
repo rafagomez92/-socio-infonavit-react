@@ -1,4 +1,3 @@
-
 import FadeIn from './FadeIn';
 import './launch.css';
 
@@ -12,8 +11,7 @@ const LauncScreen = () => {
                         <span className="sr-only bg-dark">Loading...</span>
                     </div>
                 </div>
-                    <FadeIn />
-                    {/* <img className="margin-img" src={logo} alt="logo" />                 */}
+                <FadeIn />                    
             </div>
             
         </section>

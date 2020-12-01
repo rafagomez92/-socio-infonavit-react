@@ -9,15 +9,21 @@ const Formulario = () => {
         email: '',
         password: ''
     });
+
+    // Estado para activar el botón, el estado iniciale es desactivado
     const [ error, setError ] = useState(true);
+    
+    // Estado para activar el mensaje cuando un input este incorrecto
     const [ messageError, setMessageError] = useState(true);
+
+    // Estado para direccionar a los benevits
     const [ redirect, setRedirect ] = useState(false);
     
     const { email, password } = dataLogin;    
-
+    
     const baseUrl = "https://staging.api.socioinfonavit.io/api/v1/login";
 
-// Comprobamos que email y password sean campos validos
+// Comprobamos que email y password tengan valores
     useEffect(() => {        
             if(email && password) {
                 setError(false);
@@ -27,6 +33,7 @@ const Formulario = () => {
     },[error, email, password]);
 
 
+    // Iniciamos sesión
     const handleSubmit = (e) => {
         e.preventDefault();        
         IniciarSesion();         
@@ -40,6 +47,7 @@ const Formulario = () => {
     }
 
 
+    // Guardamos los valores introducidos de email y password
     const handleChange = (e) => {        
         setDataLogin({
             ...dataLogin,
@@ -47,6 +55,7 @@ const Formulario = () => {
         })        
     }
 
+    // Variable para ser utilizada en la llamada axios
     const jsonSend = {
         user: {
             email,
@@ -54,6 +63,7 @@ const Formulario = () => {
         }
     };
 
+    // Para obtener el header
     let axiosConfig = {
         headers: {
             'Content-Type': 'application/json;charset=UTF-8',
@@ -61,6 +71,7 @@ const Formulario = () => {
         }
       };
 
+    // Realizamos un post al endpoint donde obtenemos el jwt
     const IniciarSesion = async () => {                
         await axios.post(baseUrl, jsonSend, axiosConfig)
         .then(res => {
@@ -74,20 +85,17 @@ const Formulario = () => {
     }
 
     const message = (
-    <div className="bg-danger text-white alert alert-warning alert-dismissible fade show" role="alert">
-        <strong>Error</strong> Correo o contraseña invalido.
-        <button type="button" className="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
+        <div className="bg-danger text-white alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Error</strong> Correo o contraseña invalido.
+            <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
     );
 
     return (
         <div className="mt-4 row justify-content-center">
-
-        <form
-            onSubmit={handleSubmit}
-        >
+        <form onSubmit={handleSubmit} >
             <div className="form-group">            
                 <input 
                     type="email" 
