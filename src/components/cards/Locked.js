@@ -7,7 +7,7 @@ function Locked(props) {
                 <h5 style={{color: primary_color}}> {wallet} </h5>
             </div>
             <div className="card-body p-3 text-center">
-                <img src={image} className="img-fluid" alt="imagen_tarjeta" />
+                <img loading="lazy" src={image} className="img-fluid" alt="imagen_tarjeta" />
                 <button className="btn btn-danger btn-lg">Lo quiero</button>
             </div>
         </div>

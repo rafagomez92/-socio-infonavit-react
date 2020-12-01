@@ -2,34 +2,28 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 
-
-
 const Formulario = () => {
+    
+    // Estado para guardar el email y el password
     const [ dataLogin, setDataLogin ] = useState({
         email: '',
         password: ''
     });
-
     const [ error, setError ] = useState(true);
-
     const [ messageError, setMessageError] = useState(true);
     const [ redirect, setRedirect ] = useState(false);
-
+    
     const { email, password } = dataLogin;    
-
-
 
     const baseUrl = "https://staging.api.socioinfonavit.io/api/v1/login";
 
-
-
+// Comprobamos que email y password sean campos validos
     useEffect(() => {        
             if(email && password) {
                 setError(false);
             } else {            
                 setError(true);
-            }
-        
+            }       
     },[error, email, password]);
 
 
@@ -47,14 +41,11 @@ const Formulario = () => {
 
 
     const handleChange = (e) => {        
-
         setDataLogin({
             ...dataLogin,
             [e.target.name]: e.target.value
         })        
     }
-
-
 
     const jsonSend = {
         user: {
@@ -84,7 +75,7 @@ const Formulario = () => {
 
     const message = (
     <div className="bg-danger text-white alert alert-warning alert-dismissible fade show" role="alert">
-        <strong>Error</strong> Invalid Email or password.
+        <strong>Error</strong> Correo o contraseña invalido.
         <button type="button" className="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>

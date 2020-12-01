@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
-// import LauncScreen from './components/LaunchScreen';
 import Login from './components/login/Login';
-import logo from './assets/logo.png';
 import LauchScreen from './components/launchscreen/LaunchScreen';
-import { Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import Benevits from './components/benevits/Benevits';
 
 function App() {
